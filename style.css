@@ -1,0 +1,80 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+  
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.board {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+  
+.row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+  
+.cell {
+  background: black;
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+}
+  
+.snake {
+  background:green;
+}
+  
+.food {
+  background: red;
+}
+
+
+@media screen and (max-width: 1024px) , screen and (max-height: 768px) {
+  
+  * {
+    padding: 0;
+    margin: 0;
+  }
+    
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    
+  .board {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+  }
+    
+  .row {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+    
+  .cell {
+    background: black;
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+  }
+    
+  .snake {
+    background:green;
+  }
+    
+  .food {
+    background: red;
+  }
+
+}
