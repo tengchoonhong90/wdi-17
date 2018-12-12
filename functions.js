@@ -1,12 +1,11 @@
 function startGame() {
-  game.pause = false;
+  game.pause = true;
   snake.arr = [];
   snake.size = 10;
   game.scoreCurrent = 0;
   snake.direction = "right";
   grid = [];
   scoreHolder.textContent = "Current Score: 0";
-
 
   //spawn snake randomly
   var randomX = Math.floor(Math.random() * game.size);
@@ -97,7 +96,7 @@ function moveSnake() {
     cells.forEach(function(cell) {
       cell.classList.remove("food");
     });
-    // var 
+
     game.scoreCurrent += 1;
     scoreHolder.textContent = "Current Score: " + game.scoreCurrent;
     if (game.scoreCurrent > game.scoreHigh) {
@@ -161,6 +160,11 @@ function easyMode() {
   game.speed = 10;
   game.size = 30;
   startGame();
+  if (game.pause === true) {
+    pausePrompt.textContent = "Press Spacebar to Start"
+  } else {
+    pausePrompt.textContent = "Press Spacebar to Pause"
+  }
 };
 
 function normalMode() {
@@ -168,6 +172,11 @@ function normalMode() {
   game.speed = 20;
   game.size = 50;
   startGame();
+  if (game.pause === true) {
+    pausePrompt.textContent = "Press Spacebar to Start"
+  } else {
+    pausePrompt.textContent = "Press Spacebar to Pause"
+  }
 }
 
 function hardMode() {
@@ -175,5 +184,10 @@ function hardMode() {
   game.speed = 30;
   game.size = 70;
   startGame();
+  if (game.pause === true) {
+    pausePrompt.textContent = "Press Spacebar to Start"
+  } else {
+    pausePrompt.textContent = "Press Spacebar to Pause"
+  }
 }
 

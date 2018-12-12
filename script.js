@@ -1,5 +1,10 @@
 document.addEventListener("keydown", function(event) {
-    keybind(event); 
+    keybind(event);
+    if (game.pause === true) {
+      pausePrompt.textContent = "Press Spacebar to Start"
+    } else {
+      pausePrompt.textContent = "Press Spacebar to Pause"
+    }
  });
 
 window.onload = function() {
