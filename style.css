@@ -1,14 +1,22 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Oswald', sans-serif;
+
 }
-  
+
 body {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-  
+
+h1 {
+  position: relative;
+  left: 22%;
+}
+
 .board {
   display: flex;
   flex-direction: column;
@@ -34,47 +42,172 @@ body {
   
 .food {
   background: red;
+  animation: vibrate-1 0.5s linear infinite both;
+}
+
+.head {
+  font-weight: 200;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+}
+
+.head .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.change {
+	animation: color-change-5x 12s linear infinite alternate both;
+}
+
+#easybtn {
+  position: absolute;
+  top: 40px;
+  left: 25px;
+}
+
+#normalbtn {
+  position: absolute;
+  top: 40px;
+  left: 70px;
+}
+
+#hardbtn {
+  position: absolute;
+  top: 40px;
+  left: 135px;
+}
+
+.scoreCurrent {
+  position: absolute;
+  font-size: 30px;
+  left: 10px;
+  top: 80px;
+}
+
+.highscore {
+  position: absolute;
+  font-size: 30px;
+  left: 30px;
+  top: 120px;
+}
+
+.pause {
+  position: absolute;
+  font-size: 40px;
+  animation: pulse 2s infinite;
+  display: none;
+  text-align: center;
+}
+
+.pauseprompt {
+  position: relative;
+  font-size: 20px;
+  bottom: 0;
+  left: 32%;
+  color: white;
+  padding-top: 0.5px;
+  margin: 0;
+  -webkit-text-stroke: 0.3px black;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: black;
+  color: white;
+  font-size: 20px;
+  padding: 3px;
+}
+
+.btn:active {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+          box-shadow: inset 0px 0px 5px #c1c1c1;
+   outline: none;
 }
 
 
-@media screen and (max-width: 1024px) , screen and (max-height: 768px) {
+/*shake difficulty
+/* .shake {
+	animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+ @keyframes shake-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  90% {
+    transform: translateX(-8px);
+  }
+} */
+
+ @keyframes vibrate-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes color-change-5x {
+  0% {
+  background: #19dcea;
+  }
+  25% {
+    background: #b22cff;
+  }
+  50% {
+    background: #ea2222;
+  }
+  75% {
+    background: #f5be10;
+  }
+  100% {
+    background: #3bd80d;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    color: black;
+  }
+  100% {
+    color: white;
+  }
+}
+
+/* 
+@media screen and (max-width: 1000vw) , screen and (max-height: 770vh) {
   
-  * {
-    padding: 0;
-    margin: 0;
-  }
-    
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-    
-  .board {
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-  }
-    
-  .row {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-    
-  .cell {
-    background: black;
-    width: 100%;
-    height: 100%;
-    display: table-cell;
-  }
-    
-  .snake {
-    background:green;
-  }
-    
-  .food {
-    background: red;
-  }
 
-}
+} */

@@ -1,8 +1,10 @@
 var game = {
-    score: 0,
+    scoreCurrent: 0,
+    scoreHigh: 0,
     pause: false,
     size: 50,
     speed: 20,
+    difficulty: "normal",
 };
 
 var snake = {
@@ -11,10 +13,12 @@ var snake = {
     direction: "",
 };
 
-
 var board = document.querySelector(".board");
 var pause = document.querySelector(".pause");
-var score = document.querySelector(".score");
+var scoreHolder = document.querySelector(".scoreCurrent");
+var highScore = document.querySelector(".highscore");
+highScore.textContent = "High Score: 0";
+
 var interval = null;
 var grid = [];
 var food = {};

@@ -2,10 +2,11 @@ function startGame() {
   game.pause = false;
   snake.arr = [];
   snake.size = 10;
-  game.score = 0;
+  game.scoreCurrent = 0;
   snake.direction = "right";
   grid = [];
-  score.textContent = "0";
+  scoreHolder.textContent = "Current Score: 0";
+
 
   //spawn snake randomly
   var randomX = Math.floor(Math.random() * game.size);
@@ -41,10 +42,10 @@ function makeBoard() {
 function drawSnake() {
   var cells = document.querySelectorAll(".cell");
   cells.forEach(function(cell) {
-    cell.classList.remove("snake")
+    cell.classList.remove("snake");
   });
   snake.arr.forEach(function(obj) {
-    grid[obj.y][obj.x].classList.add("snake")
+    grid[obj.y][obj.x].classList.add("snake");
   });
 };
 
@@ -84,14 +85,25 @@ function moveSnake() {
 
     //eat food
   if (snakeX == food.x && snakeY == food.y) {
-    snake.size += 1;
+    if (game.difficulty === "easy") {
+      snake.size = snake.size + 2;
+    } else if (game.difficulty === "normal") {
+      snake.size = snake.size + 5;
+    } else if (game.difficulty === "hard") {
+      snake.size = snake.size + 8;
+    }
     snake.arr.push({ x: tail.x, y: tail.y });
     var cells = document.querySelectorAll(".cell");
     cells.forEach(function(cell) {
       cell.classList.remove("food");
     });
-    game.score += 1;
-    score.textContent = game.score;
+    // var 
+    game.scoreCurrent += 1;
+    scoreHolder.textContent = "Current Score: " + game.scoreCurrent;
+    if (game.scoreCurrent > game.scoreHigh) {
+      game.scoreHigh = game.scoreCurrent;
+      highScore.textContent = "High Score: " + game.scoreCurrent;
+    }
     makeFood();
   }
 
@@ -128,6 +140,8 @@ function keybind(event) {
     game.pause = !game.pause;
     pause.style.display = game.pause ? "block" : "none";
   }
+  //prevent keybind from default event
+  event.preventDefault();
 };
 
 function makeFood() {
@@ -138,6 +152,28 @@ function makeFood() {
     };
   } while (collision(food));
     grid[food.y][food.x].classList.add("food");
-}
+};
 
 var collision = hitbox => snake.arr.some(item => item.x === hitbox.x && item.y === hitbox.y);
+
+function easyMode() {
+  game.difficulty = "easy";
+  game.speed = 10;
+  game.size = 30;
+  startGame();
+};
+
+function normalMode() {
+  game.difficulty = "normal";
+  game.speed = 20;
+  game.size = 50;
+  startGame();
+}
+
+function hardMode() {
+  game.difficulty = "hard";
+  game.speed = 30;
+  game.size = 70;
+  startGame();
+}
+
